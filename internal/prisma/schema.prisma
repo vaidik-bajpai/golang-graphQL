@@ -1,0 +1,17 @@
+datasource db {
+    provider = "postgres"
+    url = env("DATABASE_URL")
+}
+
+generator db {
+    provider = "go run github.com/steebchen/prisma-client-go"
+}
+
+model JobListing {
+    id Int @id @default(autoincrement())
+    createdAt DateTime? @default(now())
+    title String
+    description String
+    company String
+    url String
+}
